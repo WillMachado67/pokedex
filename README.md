@@ -1,3 +1,4 @@
 # Pokedex 
 
-* Ainda contem varios bugs
+Instalar requisitos:
+* pip install requests

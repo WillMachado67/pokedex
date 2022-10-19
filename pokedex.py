@@ -10,8 +10,10 @@ def pokeApi(number_name):
 
 
 def namePokemon(data):
-    name = data['species']['name']
-    print(f'Nome do pokemon: {name.title()}')
+    id_pokemon = data['id']
+    name_pokemon = data['species']['name']
+    print(f'#{id_pokemon}')
+    print(f'Nome do pokemon: {name_pokemon.title()}')
 
 
 def pokeAbility(data):
@@ -38,9 +40,17 @@ def typePokemon(data):
     print(type)
 
 
-select_pokemon = randint(1, 905)
-print(f'#{select_pokemon}')
-namePokemon(pokeApi(select_pokemon))
-typePokemon(pokeApi(select_pokemon))
-pokeAbility(pokeApi(select_pokemon))
-pokeMoves(pokeApi(select_pokemon))
+reset = True
+while reset:
+    select_pokemon = input('Digite nome ou id do pokemon: ')
+    print()
+    try:
+        namePokemon(pokeApi(select_pokemon))
+        typePokemon(pokeApi(select_pokemon))
+        pokeAbility(pokeApi(select_pokemon))
+        pokeMoves(pokeApi(select_pokemon))
+        print()
+        reset = False
+    except ValueError:
+        print('Esse pókemon não existe')
+        print()
